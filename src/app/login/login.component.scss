@@ -7,9 +7,12 @@
     align-items: center;
     justify-content: center;
     
-    .text-erro {
-        color:$errorColor;
-        font-size: 14px;
+    .container-text{
+      height: 20px;
+      .text-erro {
+          color:$errorColor;
+          font-size: 14px;
+      }
     }
 
     .logo-devaria {
@@ -32,13 +35,14 @@
             margin-top: -15px;
         }
        .app-input {
-         margin-bottom: 18px;
+         margin-bottom: 10px;
         
         }
     }
 
     .input-container {
         display: flex;
+        margin-top: 18px;
         
         img {
             margin-right: 10px;
@@ -64,5 +68,42 @@
             
           }
         }
+      }
+
+      @media screen and (min-width: $breakpointDesktop){
+        display: flex;
+       flex-direction: row;
+       align-items: center;
+        .logo-devaria {
+          width: 30%;
+          margin: 0;
+          margin-right: 15%;
+        }
+        
+          form {
+            border: 1px solid $primaryColor;
+            padding: 50px 40px;
+            border-radius: 32px;
+             .text-erro {
+              margin: 0px;
+              
+             }
+            
+            .input-container {
+              .app-input{
+                width: 320px;
+              }
+              &:first-child {
+               
+                img {
+                  margin-top: -25px;
+                }
+            
+              }
+  
+            }
+          }
+
+        
       }
    }

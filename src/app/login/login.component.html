@@ -1,7 +1,9 @@
 <div class="container-login">
     <img class="logo-devaria" src="/assets/logo.svg" alt="Logo">
-    <form action="" class="">
-        <p class="text-erro text-center" *ngIf="msgErro" >{{ msgErro }}</p>
+    <form >
+        <div class="container-text">
+            <p class="text-erro text-center" *ngIf="msgErro" >{{ msgErro }}</p>
+        </div>
         <div class="input-container">
             <img src="/assets/icones/mail.svg" alt="Icone Email">
             <input type="email" class="app-input" placeholder="Informe seu e-mail">
