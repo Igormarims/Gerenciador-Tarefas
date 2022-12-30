@@ -1,1 +1,15 @@
-<p>login works!</p>
+<div class="container-login">
+    <img class="logo-devaria" src="/assets/logo.svg" alt="Logo">
+    <form action="" class="">
+        <p class="text-erro text-center" *ngIf="msgErro" >{{ msgErro }}</p>
+        <div class="input-container">
+            <img src="/assets/icones/mail.svg" alt="Icone Email">
+            <input type="email" class="app-input" placeholder="Informe seu e-mail">
+        </div>
+        <div class="input-container">
+            <img src="/assets/icones/lock.svg" alt="Icone cadeado">
+            <input type="password" class="app-input" placeholder="Informe sua senha">
+        </div>
+        <button class="btn-submit" type="submit">Login</button>
+    </form>
+</div>
