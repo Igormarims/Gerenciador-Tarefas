@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -6,12 +7,39 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  
-  msgErro: string = '';
+    form: FormGroup;
+    msgErro: string = '';
+    carregando: boolean = false;
+
    
-  constructor() { }
+  constructor(private fb: FormBuilder) {
+    this.form = fb.group({
+      login: [null, [Validators.required,Validators.email]],
+      senha: [null, Validators.required]
+    })
+   }
 
   ngOnInit(): void {
+  }
+
+  async submit(): Promise<void> {
+    console.log(this.form.value);
+    if(this.form.invalid) {
+      return;
+    }    
+    this.carregando = true;
+
+    try {
+    // autenticar o usuário e salvar o token
+    throw new Error()
+
+    } catch (erro:any) {
+       this.msgErro = erro.error && erro.error.message ? erro.error.message: 'Ocorreu algum erro ao realizar o login, tente mais tarde'   
+       }finally{
+      this.carregando = false
+    }
+
+
   }
 
 }

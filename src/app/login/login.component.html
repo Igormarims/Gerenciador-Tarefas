@@ -1,17 +1,23 @@
 <div class="container-login">
     <img class="logo-devaria" src="/assets/logo.svg" alt="Logo">
-    <form >
+    <form [formGroup]="form" (ngSubmit)="submit()" >
         <div class="container-text">
             <p class="text-erro text-center" *ngIf="msgErro" >{{ msgErro }}</p>
         </div>
         <div class="input-container">
             <img src="/assets/icones/mail.svg" alt="Icone Email">
-            <input type="email" class="app-input" placeholder="Informe seu e-mail">
+            <input type="email" class="app-input" placeholder="Informe seu e-mail" formControlName="login">
         </div>
         <div class="input-container">
             <img src="/assets/icones/lock.svg" alt="Icone cadeado">
-            <input type="password" class="app-input" placeholder="Informe sua senha">
+            <input type="password" class="app-input" placeholder="Informe sua senha" formControlName="senha">
         </div>
-        <button class="btn-submit" type="submit">Login</button>
+        <button
+         [disabled]="form.invalid || carregando"
+          class="btn-submit" 
+          type="submit"
+          [attr.title]="form.invalid ? 'preencha os campos': '' "
+          >
+          Login</button>
     </form>
 </div>
