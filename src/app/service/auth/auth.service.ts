@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { GerenciadorTarefasService } from 'src/app/compartilhado/service/gerenciador-tarefas.service';
@@ -50,5 +51,8 @@ export class AuthService extends GerenciadorTarefasService {
 
    }
 
+
+
+ 
      
 }
