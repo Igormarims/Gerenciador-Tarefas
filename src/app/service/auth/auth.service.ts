@@ -43,7 +43,7 @@ export class AuthService extends GerenciadorTarefasService {
        if(!this.estaLogado()) {
         return null;
        }
-       const nome = localStorage.getItem('usuarioEmail');
+       const nome = localStorage.getItem('usuarioNome');
        const email = localStorage.getItem('usuarioEmail');
        const token = localStorage.getItem('acessToken');
 

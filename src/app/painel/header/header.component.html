@@ -1,0 +1,15 @@
+<div class="container-header">
+    <img src="/assets/logo.svg" alt="Logo" class="logo">
+    <button class="btn-add" (click)="abrirModal()">
+        <span class="plus">
+            +
+        </span>
+        <span class="add-task-text">
+            Adicionar tarefa
+        </span>
+    </button>
+    <div class="user-info">
+        <span class="user-name">Olá, {{usuarioLogado?.nome}}</span>
+        <button class="btn-logout" (click)="deslogar()"></button>
+    </div>
+</div>

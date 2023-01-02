@@ -1,0 +1,64 @@
+ @import '../../../assets/styles/variaveis.scss';
+
+.filter-container {
+    width: 95%;
+    margin: 15px auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: $lightGreyColor;
+    padding: 8px 10px;
+    border-radius: 12px;
+    color: $primaryColor;
+    h3 {
+        font-size: 18px;
+        font-family: $fontBold;
+        margin-left: 10px;
+        margin-bottom: 0;
+    }
+    .filter-desktop {
+        display: none;
+    }
+
+    img {
+        margin-right: 10px
+    }
+
+    @media screen and (min-width: $breakpointDesktop) {
+          width: 85%;
+
+          .icone-filtro {
+            display: none;
+          }
+          .filter-desktop {
+            display: block;
+             
+            .icone-limpar {
+              cursor: pointer;
+              width: 25px;
+              margin-left: 15px;
+             }
+
+            label {
+                margin: 0 8px;
+                font-size: 14px;
+            }
+            .divisor {
+                border-left: 1px solid $primaryColor;
+                margin-left: 16px;
+            }
+            .app-input {
+                border-radius: 6px;
+                border: 0.5px solid $primaryColor;
+                padding: 1px 8px;
+                
+            }
+        }
+
+    }
+
+    @media screen and (min-width: 1132px) {
+        width: 88%;
+    }
+}
+
