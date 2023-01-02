@@ -1,8 +1,42 @@
 <app-filtros></app-filtros>
 
-<div class="container-list" [ngClass]="{vazia: !tarefas?.length}">
-    <div class="cards-tarefa">
-        <img src="" alt="" class="">
-        <p class=""></p>
+<div class="container-lista" [ngClass]="{vazia: !tarefas?.length}">
+    <div class="cards-tarefas" *ngIf="tarefas?.length; else listaVazia">
+       <div 
+           *ngFor="let tarefa of tarefas"
+           [class]="{concluida: !!tarefa.dataConclusao}"
+           (click)="selecionarTarefa(tarefa)" 
+           class="card-tarefa">
+           
+        
+        <img 
+            class="checkbox"
+            [src]="'/assets/icones/' + obterIconeDaTarefa(tarefa)" 
+            alt="Check Tarefa"
+        />
+        <div class="titulo-tarefa">
+            <p>
+                {{tarefa.nome}}
+            </p>
+            <p class="data-tarefa">
+                {{ tarefa.dataConclusao ? 'Concluída em: ': 'Previsão de Conclusão: ' }}
+                {{ tarefa.dataConclusao || tarefa.dataPrevistaConclusao | date: 'dd/MM/yyyy' }}
+            </p>
+        </div>
+       </div>
     </div>
+    
+    <ng-template #listaVazia>
+        <div class="lista-vazia">
+            <img 
+                class="img"
+                src="/assets/icones/lista-vazia.svg" 
+                alt="Nenhuma atividade cadastrada" 
+                
+            />
+            <p class="p">
+                Você ainda não possui tarefas cadastradas!
+            </p>
+        </div>
+    </ng-template>
 </div>

@@ -12,12 +12,14 @@
           <input 
                 type="date"
                 class="app-input" 
+                [(ngModel)]="filtro.periodoDe"
                 (change)="filtarTarefas()"
            >
           <label>Até</label>
           <input 
                 type="date" 
-                class="app-input" 
+                class="app-input"
+                [(ngModel)]="filtro.periodoAte" 
                 (change)="filtarTarefas()"
            >
           <span class="divisor"></span>
@@ -25,6 +27,7 @@
           <select 
                 (change)="filtarTarefas()" 
                 class="app-input" 
+                [(ngModel)]="filtro.status.id"
                 placeholder="Status">
             <option
                   *ngFor="let status of listaDeStatus"

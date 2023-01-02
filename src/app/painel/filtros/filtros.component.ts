@@ -1,6 +1,7 @@
 import { StatusEnum } from './../shereds/enums/status.enum';
 import { Component, OnInit } from '@angular/core';
 import { Status } from '../shereds/models/status.model';
+import { Filtro } from '../shereds/models/filtro.model';
 
 @Component({
   selector: 'app-filtros',
@@ -9,6 +10,7 @@ import { Status } from '../shereds/models/status.model';
 })
 export class FiltrosComponent implements OnInit {
   
+  filtro: Filtro = new Filtro();
   listaDeStatus: Status[] = StatusEnum.todosStatus()
 
   constructor() { }
@@ -17,15 +19,20 @@ export class FiltrosComponent implements OnInit {
   }
 
   toggleModal(){
-
+    console.log('toggle modal');
+    
   }
 
   filtarTarefas() {
-
+    console.log('filtrar tarefas ', this.filtro );
+    
   }
 
   limparFiltro() {
-    
-  }
+    this.filtro.periodoDe = ''
+    this.filtro.periodoAte = ''
+    this.filtro.status = StatusEnum.TODAS;
+    this.filtarTarefas();
+   }
 
 }

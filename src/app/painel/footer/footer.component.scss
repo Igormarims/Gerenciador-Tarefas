@@ -1,0 +1,47 @@
+@import '../../../assets/styles/variaveis.scss';
+.container-footer {
+    
+    padding-bottom: 10px;
+   
+    .btn-add {
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        background-color: $lightGreyColor;
+        border-radius: 12px;
+        width: 97%;
+        height: 48px;
+        border: none;
+        outline: none;
+        font-size: 14px;
+        padding: 10px;
+        color: $primaryColor;
+        &:focus {
+            border: 1px solid $primaryColor;
+        }
+
+        img {
+            margin-right: 15px;
+        }
+    }
+    span {
+        display: none;
+    }
+
+
+     @media screen  and (min-width: $breakpointDesktop){
+        border-top: 1px solid $lightGreyColor;
+        height: 50px;
+        text-align: center;
+        padding-top: 15px;
+        .btn-add {
+            display: none;
+            
+        }
+        span{
+           display: block;
+           font-size: 14px;
+           color: $primaryColor;
+         }
+     }  
+}
