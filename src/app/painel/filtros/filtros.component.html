@@ -13,19 +13,19 @@
                 type="date"
                 class="app-input" 
                 [(ngModel)]="filtro.periodoDe"
-                (change)="filtarTarefas()"
+                (change)="filtrarTarefas()"
            >
           <label>Até</label>
           <input 
                 type="date" 
                 class="app-input"
                 [(ngModel)]="filtro.periodoAte" 
-                (change)="filtarTarefas()"
+                (change)="filtrarTarefas()"
            >
           <span class="divisor"></span>
           <label>Status</label>
           <select 
-                (change)="filtarTarefas()" 
+                (change)="filtrarTarefas()" 
                 class="app-input" 
                 [(ngModel)]="filtro.status.id"
                 placeholder="Status">
@@ -44,3 +44,43 @@
             />
     </div>
 </div>
+
+<app-modal [exibir]="modalAberto">
+   <h4 class="modal-title">Filtrar tarefas</h4>
+   
+   <div class="form-filters">
+       <input
+          class="app-input inicio"
+          type="text"
+          placeholder="Data prevista de conclusão (inicial)"
+          [ngModel]="filtro.periodoDe"
+        />
+       <input
+          class="app-input final"
+          type="text"
+          placeholder="Data prevista de conclusão (final)"
+          [ngModel]="filtro.periodoAte"
+        />
+        <select 
+                class="app-input" 
+                [(ngModel)]="filtro.status.id"
+                placeholder="Status">
+            <option
+                *ngFor="let status of listaDeStatus"
+                [value]="status.id"
+            >
+                {{status.nome}}
+            </option>
+        </select>
+    </div>
+   
+   <div class="actions">
+        <button 
+              class="btn btn-principal btn-apply-filter"
+              (click)="filtrarTarefas()"
+        >
+        Aplicar filtro
+        </button>
+        <span class="btn-secundario" (click)="toggleModal()">Cancelar</span>
+   </div>
+</app-modal>

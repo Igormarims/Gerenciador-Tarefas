@@ -12,6 +12,7 @@ export class FiltrosComponent implements OnInit {
   
   filtro: Filtro = new Filtro();
   listaDeStatus: Status[] = StatusEnum.todosStatus()
+  modalAberto: boolean = false;
 
   constructor() { }
 
@@ -20,19 +21,19 @@ export class FiltrosComponent implements OnInit {
 
   toggleModal(){
     console.log('toggle modal');
-    
+     this.modalAberto = !this.modalAberto;
   }
 
-  filtarTarefas() {
+  filtrarTarefas() {
     console.log('filtrar tarefas ', this.filtro );
-    
+    this.toggleModal();
   }
 
   limparFiltro() {
     this.filtro.periodoDe = ''
     this.filtro.periodoAte = ''
     this.filtro.status = StatusEnum.TODAS;
-    this.filtarTarefas();
+    this.filtrarTarefas();
    }
 
 }

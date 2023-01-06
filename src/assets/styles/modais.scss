@@ -1,0 +1,53 @@
+.app-modal {
+    background:rgba(0, 0 , 0, .85);
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    top:0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+     &-content {
+        background-color: $whiteColor;
+        border-radius: 12px;
+        padding: 25px 20px;
+        width: 90vw;
+         
+        @media screen and (min-width: $breakpointDesktop){
+            width: 385px;
+        }
+       
+         h4.modal-title {
+            color: $primaryColor;
+            text-align: center;
+            font-family: $fontBold;
+            font-size: 16px;
+            margin-bottom: 20px;
+         }
+
+         div.actions {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 24px;
+
+            .btn-principal {
+             background-color: $primaryColor; 
+             border-radius: 12px;
+             color: $whiteColor;
+             font-size: 14px;
+             margin-right: 20px;
+             padding: 10px 12px;
+             cursor: pointer;
+            }
+
+            .btn-secundario {
+               color: $primaryColor;
+               font-size: 14px;
+               text-decoration: underline;
+               cursor: pointer;
+            }
+         }
+
+    }
+}
