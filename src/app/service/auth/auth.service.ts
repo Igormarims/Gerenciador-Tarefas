@@ -50,9 +50,5 @@ export class AuthService extends GerenciadorTarefasService {
        return new UsuarioLogado(nome!, email! , token!);
 
    }
-
-
-
- 
-     
+  
 }

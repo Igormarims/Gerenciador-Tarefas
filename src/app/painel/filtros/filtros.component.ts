@@ -26,7 +26,7 @@ export class FiltrosComponent implements OnInit {
 
   filtrarTarefas() {
     console.log('filtrar tarefas ', this.filtro );
-    this.toggleModal();
+    this.modalAberto = false;
   }
 
   limparFiltro() {

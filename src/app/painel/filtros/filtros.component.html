@@ -54,20 +54,26 @@
           type="text"
           placeholder="Data prevista de conclusão (inicial)"
           [ngModel]="filtro.periodoDe"
+          inputDateComPlaceholder
         />
        <input
           class="app-input final"
           type="text"
           placeholder="Data prevista de conclusão (final)"
           [ngModel]="filtro.periodoAte"
+          inputDateComPlaceholder
         />
         <select 
                 class="app-input" 
                 [(ngModel)]="filtro.status.id"
-                placeholder="Status">
+                placeholder="Status"
+                
+            >
+                
             <option
                 *ngFor="let status of listaDeStatus"
                 [value]="status.id"
+               
             >
                 {{status.nome}}
             </option>
@@ -84,3 +90,4 @@
         <span class="btn-secundario" (click)="toggleModal()">Cancelar</span>
    </div>
 </app-modal>
+

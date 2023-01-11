@@ -13,6 +13,7 @@ import { FiltrosComponent } from './painel/filtros/filtros.component';
 import { ListaComponent } from './painel/lista/lista.component';
 import { ModalComponent } from './shared/components/modal/modal.component';
 import { InputDateComPlacDirective } from './shared/directives/input-date-com-plac.directive';
+import { ModalTarefaComponent } from './painel/modal-tarefa/modal-tarefa.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,7 +24,8 @@ import { InputDateComPlacDirective } from './shared/directives/input-date-com-pl
     FiltrosComponent,
     ListaComponent,
     ModalComponent,
-    InputDateComPlacDirective
+    InputDateComPlacDirective,
+    ModalTarefaComponent
   ],
   imports: [
     BrowserModule,

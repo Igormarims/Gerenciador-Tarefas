@@ -1,0 +1,50 @@
+<app-modal [exibir]="exibir ">
+    <form 
+        [formGroup]="form" 
+        (ngSubmit)="submit()"  
+        class="form-tarefa"
+        >
+        <h4 class="modal-title">{{ configuracoes?.titulo }}</h4>
+           <p *ngIf="getErros()" [innerHTML]="getErros()" class="text-danger"> </p>
+           <div class="inputs-container">
+                <input 
+                    class="app-input"
+                    type="text"
+                    placeholder="Nome da tarefa"
+                    formControlName="nome"
+                />
+                <input 
+                    class="app-input"
+                    type="text"
+                    placeholder="Previsão de conclusão"
+                    formControlName="dataPrevistaConclusao"
+                    inputDateComPlaceholder 
+                />
+                <input 
+                    *ngIf="estaEmModoEdicao()"
+                    class="app-input"
+                    type="text"
+                    placeholder="Data de conclusão"
+                    formControlName="dataConclusao"
+                    inputDateComPlaceholder 
+                />
+           </div>
+       
+           <div class="actions">
+         <button 
+            class="btn btn-principal btn-apply-filter"
+            type="submit"
+            [disabled]="form.invalid || carregando"
+            [attr.title]="form.invalid ? 'Preencha todos os campos corretamente':''"
+         >
+            {{ configuracoes?.txtBtnPrincipal }}
+         </button>
+            <span 
+               class="btn-secundario" 
+               (click)="configuracoes?.acaoBtnSecundario()"
+            >
+              {{ configuracoes?.txtBtnSecundario }}
+            </span>
+        </div>
+    </form>
+</app-modal>
