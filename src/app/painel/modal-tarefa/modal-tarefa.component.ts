@@ -1,3 +1,4 @@
+import { ModalTarefaService, ModalTarefaConfig } from './../shereds/services/modal-tarefa.service';
 import { ModoFormulario } from './../shereds/enums/modo-formulario.enum';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
@@ -8,7 +9,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./modal-tarefa.component.scss']
 })
 export class ModalTarefaComponent implements OnInit {
-   exibir = true;
+   exibir?:boolean;
    form: FormGroup 
    modo: ModoFormulario = ModoFormulario.CADASTRO;
    configuracoes: any;
@@ -16,8 +17,10 @@ export class ModalTarefaComponent implements OnInit {
 
   
 
-  constructor(private fb: FormBuilder) {
-    this.form = this.fb.group({
+  constructor(private fb: FormBuilder, private modalTarefaService: ModalTarefaService) {
+     this.definirConfiguracao();  
+    
+     this.form = this.fb.group({
       nome: [null, Validators.compose([Validators.minLength(4), Validators.required])],
       dataPrevistaConclusao: [null, Validators.compose([Validators.required])],
       dataConclusao: [null]
@@ -25,10 +28,13 @@ export class ModalTarefaComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    
-    // console.log(this.form.get('nome'));
-    
-    this.definirConfiguracao();   
+     this.modalTarefaService.escutarEvento((config: ModalTarefaConfig)=> {
+         this.exibir = config.exibir!
+         this.modo = config.modo || this.modo
+         this.definirConfiguracao();
+         
+         
+     })
   }
 
   getErros(){
@@ -37,8 +43,7 @@ export class ModalTarefaComponent implements OnInit {
        
        if(this.form.controls['nome'].errors?.['required']) {
         erros.push('Nome é obrigatório')
- 
-        
+
        }
        if(this.form.get('nome')?.hasError('minlength')) {
         erros.push('Nome deve ter no mínimo 4 caracteres')
@@ -46,17 +51,11 @@ export class ModalTarefaComponent implements OnInit {
         }
     }
 
-    
-    
     if( this.campoJaFoiManipulado('dataPrevistaConclusao') ){
       if(this.form.get('dataPrevistaConclusao')?.hasError('required')){
          erros.push('Data prevista conclusão é obrigatória')
       }
     }
-        
-      
-      
-        
     return erros.join('<br/>')
   }
 
@@ -72,7 +71,7 @@ export class ModalTarefaComponent implements OnInit {
       txtBtnSecundario: 'Cancelar',
       acaoBtnSecundario: this.feicharModal.bind(this)
     }
-     if(this.estaEmModoEdicao() ){
+     if(this.estaEmModoEdicao()){
       configuracao.titulo = 'Editar tarefa'
       configuracao.txtBtnPrincipal = 'Salvar alterações'
       configuracao.txtBtnSecundario = 'Excluir'

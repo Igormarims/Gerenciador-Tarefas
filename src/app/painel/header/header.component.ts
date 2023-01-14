@@ -1,3 +1,4 @@
+import { ModalTarefaService } from './../shereds/services/modal-tarefa.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UsuarioLogado } from 'src/app/models/usuario-logado.model';
@@ -12,7 +13,10 @@ export class HeaderComponent implements OnInit {
    
    usuarioLogado?: UsuarioLogado | null ;
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService,
+              private router: Router,
+              private modalTarfaService: ModalTarefaService ) 
+              { }
 
   ngOnInit(): void {
     this.usuarioLogado = this.authService.obterUsuarioLogado()
@@ -24,7 +28,7 @@ export class HeaderComponent implements OnInit {
   }
   
   abrirModal() {
-    console.log('abrir modal');
+    this.modalTarfaService.exibirModal()
     
   }
 
