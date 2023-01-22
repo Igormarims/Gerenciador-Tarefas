@@ -6,7 +6,7 @@ import { Subject } from 'rxjs';
 export type ModalTarefaConfig = {
   exibir?: boolean;
   modo?: ModoFormulario;
-  terefa?:Tarefa;
+  tarefa?:Tarefa;
 }
 
 
@@ -36,8 +36,7 @@ export class ModalTarefaService {
    
   escutarEvento(callback: Function) {
      this.eventEmitter.subscribe((event)=> {
-      console.log(event);
-       callback(event)
+         callback(event)
      })
   }
 

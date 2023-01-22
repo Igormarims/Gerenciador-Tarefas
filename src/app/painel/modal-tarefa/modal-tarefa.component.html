@@ -4,8 +4,16 @@
         (ngSubmit)="submit()"  
         class="form-tarefa"
         >
-        <h4 class="modal-title">{{ configuracoes?.titulo }}</h4>
-           <p *ngIf="getErros()" [innerHTML]="getErros()" class="text-danger"> </p>
+        <img
+             src="assets/icones/x-circle.svg"
+             alt="icone fechar modal" 
+             class="icone-fechar"
+             *ngIf="estaEmModoEdicao()"
+             (click)="fecharModal()"
+         />
+       
+         <h4 class="modal-title">{{ configuracoes?.titulo }}</h4>
+        <p *ngIf="getErros()" [innerHTML]="getErros()" class="text-danger"> </p>
            <div class="inputs-container">
                 <input 
                     class="app-input"
@@ -19,6 +27,7 @@
                     placeholder="Previsão de conclusão"
                     formControlName="dataPrevistaConclusao"
                     inputDateComPlaceholder 
+                    #dataPrevistaConclusao
                 />
                 <input 
                     *ngIf="estaEmModoEdicao()"

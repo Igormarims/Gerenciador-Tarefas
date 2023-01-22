@@ -1,4 +1,3 @@
-import { Observable } from 'rxjs';
 import { environment } from './../../../environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -15,6 +14,8 @@ export abstract class GerenciadorTarefasService {
           'Content-Type': 'application/json',
           ...(req.headers || {}) 
         })
+       
+        
         return this.http.request(
            req.method || 'GET',
           `${environment.apiGerenciadorTarefas}/${req.url}`,
@@ -25,4 +26,5 @@ export abstract class GerenciadorTarefasService {
            }
         ).toPromise();
       }
+
 }

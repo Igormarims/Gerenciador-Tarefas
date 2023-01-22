@@ -1,5 +1,5 @@
 import { StatusEnum } from './../shereds/enums/status.enum';
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Status } from '../shereds/models/status.model';
 import { Filtro } from '../shereds/models/filtro.model';
 
@@ -13,6 +13,7 @@ export class FiltrosComponent implements OnInit {
   filtro: Filtro = new Filtro();
   listaDeStatus: Status[] = StatusEnum.todosStatus()
   modalAberto: boolean = false;
+  @Output('filtarTarefas')  filtrarTarefasEmitter: EventEmitter<Filtro> = new EventEmitter();
 
   constructor() { }
 
@@ -20,12 +21,11 @@ export class FiltrosComponent implements OnInit {
   }
 
   toggleModal(){
-    console.log('toggle modal');
      this.modalAberto = !this.modalAberto;
   }
 
   filtrarTarefas() {
-    console.log('filtrar tarefas ', this.filtro );
+    this.filtrarTarefasEmitter.emit(this.filtro)
     this.modalAberto = false;
   }
 

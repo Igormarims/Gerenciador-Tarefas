@@ -1,4 +1,4 @@
-<app-filtros></app-filtros>
+<app-filtros (filtarTarefas)="filtrarTarefas($event)"></app-filtros>
 
 <div class="container-lista" [ngClass]="{vazia: !tarefas?.length}">
     <div class="cards-tarefas" *ngIf="tarefas?.length; else listaVazia">
@@ -20,7 +20,7 @@
             </p>
             <p class="data-tarefa">
                 {{ tarefa.dataConclusao ? 'Concluída em: ': 'Previsão de Conclusão: ' }}
-                {{ tarefa.dataConclusao || tarefa.dataPrevistaConclusao | date: 'dd/MM/yyyy' }}
+                {{ tarefa.dataConclusao || tarefa.dataPrevistaConclusao | date: 'dd/MM/yyyy': '+3' }}
             </p>
         </div>
        </div>

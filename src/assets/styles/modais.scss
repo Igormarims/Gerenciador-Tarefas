@@ -12,7 +12,7 @@
         border-radius: 12px;
         padding: 25px 20px;
         width: 90vw;
-         
+        position:relative; 
         @media screen and (min-width: $breakpointDesktop){
             width: 385px;
         }

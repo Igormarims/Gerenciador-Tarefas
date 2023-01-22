@@ -12,7 +12,7 @@ export class Filtro {
         this.status = status || StatusEnum.TODAS;
     }
 
-    public toQueryPaarams(): any {
+    public toQueryParams(): any {
         return {
             periodoDe: this.periodoDe || '',
             periodoAte: this.periodoAte || '',

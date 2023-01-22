@@ -28,7 +28,6 @@ export class LoginComponent implements OnInit {
   }
 
   async submit(): Promise<void> {
-    console.log(this.form.value);
     if(this.form.invalid) {
       return;
     }    
